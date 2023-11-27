@@ -1,7 +1,9 @@
 // import express from 'express'
 const express = require('express')
+const bodyParser = require('body-parser')
 
 const app = express()
+app.use(bodyParser.json())
 const port = 3000
 
 app.get('/', (req, res) => {
@@ -13,9 +15,53 @@ app.get('/new-route', (req, res) => {
 })
 
 app.get('/products', (req, res) => {
-  res.json({ name: 'iPhone X', price: 999 })
+  res.json([
+    { name: 'iPhone X', price: 999 },
+    { name: 'iPhone I', price: 1299 },
+  ])
+})
+
+app.get('/products/:id', (req, res) => {
+  const { id } = req.params
+  res.json({ id, name: 'iPhone X', price: 999 })
 })
 
 app.listen(port, () => {
   console.log('Mi port ' + port)
 })
+
+// app.get('/:id', (req, res) => {
+//   const { id } = req.params
+//   res.json({
+//     id,
+//     name: 'iPhone X',
+//     price: 999,
+//   })
+// })
+
+// app.post('/product', (req, res) => {
+//   const body = req.body
+//   console.log(body)
+//   res.json({
+//     message: 'created',
+//     data: body,
+//   })
+// })
+
+// app.patch('/:id', (req, res) => {
+//   const { id } = req.params
+//   const body = req.body
+//   res.json({
+//     message: 'Update',
+//     data: body,
+//     id,
+//   })
+// })
+
+// app.delete('/:id', (req, res) => {
+//   const { id } = req.params
+//   res.json({
+//     message: 'Delete',
+//     id,
+//   })
+// })
