@@ -6,7 +6,7 @@ class ProductService {
     this.generate()
   }
   generate() {
-    const limit = 7
+    const limit = 2
     for (let index = 0; index < limit; index++) {
       this.products.push({
         id: faker.string.uuid(),
