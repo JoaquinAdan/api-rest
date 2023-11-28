@@ -1,12 +1,11 @@
 // import express from 'express'
 const express = require('express')
-const bodyParser = require('body-parser')
 const routerApi = require('./routes')
 
 const app = express()
-
-app.use(bodyParser.json())
 const port = 3000
+
+app.use(express.json())
 
 app.get('/', (req, res) => {
   res.send('<div style="color: red;">Hello world!</div>')
