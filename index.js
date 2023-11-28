@@ -1,8 +1,10 @@
 // import express from 'express'
 const express = require('express')
 const bodyParser = require('body-parser')
+const routerApi = require('./routes')
 
 const app = express()
+
 app.use(bodyParser.json())
 const port = 3000
 
@@ -14,21 +16,15 @@ app.get('/new-route', (req, res) => {
   res.send('<div style="color: blue;">Am a new endpoint</div>')
 })
 
-app.get('/products', (req, res) => {
-  res.json([
-    { name: 'iPhone X', price: 999 },
-    { name: 'iPhone I', price: 1299 },
-  ])
-})
-
-app.get('/products/:id', (req, res) => {
-  const { id } = req.params
-  res.json({ id, name: 'iPhone X', price: 999 })
-})
+routerApi(app)
 
 app.listen(port, () => {
   console.log('Mi port ' + port)
 })
+// app.get('/categories/:categoryId/products/:productId', (req, res) => {
+//   const { productId, categoryId } = req.params
+//   res.json({ categoryId, productId })
+// })
 
 // app.get('/:id', (req, res) => {
 //   const { id } = req.params
