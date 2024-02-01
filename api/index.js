@@ -20,11 +20,11 @@ const options = {
 }
 app.use(cors(options))
 
-app.get('/', (req, res) => {
+app.get('/api', (req, res) => {
   res.send('<div style="color: red;">Hello world!</div>')
 })
 
-app.get('/new-route', (req, res) => {
+app.get('/api/new-route', (req, res) => {
   res.send('<div style="color: blue;">Am a new endpoint</div>')
 })
 
